@@ -1,0 +1,24 @@
+Weekly Product Review Pulse: {{ app_name }}
+Date Generated: {{ date }}
+Total Issues Tracked: {{ clusters|length }} Clusters
+
+Executive Summary
+This report aggregates and analyzes the top customer feedback themes from the Google Play Store for the past week.
+
+--------------------------------------------------
+{% for cluster in clusters %}
+Theme {{ loop.index }}: {{ cluster.theme_name }}
+Impact: {{ cluster.review_count }} related reviews
+
+Actionable Ideas:
+{% for idea in cluster.action_ideas %}
+- {{ idea }}
+{% endfor %}
+
+Verbatim Quotes:
+{% for quote in cluster.quotes %}
+"{{ quote }}"
+{% endfor %}
+
+--------------------------------------------------
+{% endfor %}

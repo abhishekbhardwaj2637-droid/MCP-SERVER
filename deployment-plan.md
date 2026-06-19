@@ -1,56 +1,89 @@
-# Railway Deployment Plan
+# Unified Production Deployment Plan
 
-Deploying this local MCP Server to [Railway](https://railway.app/) requires addressing two major things: **Terminal Interactivity** and **Secret Management**.
-
-Because Railway runs your application in the cloud without an interactive terminal and handles ephemeral deployments, we cannot use local `.json` files for secrets or prompt the user via `stdin`.
-
-Here is the step-by-step plan to prepare and deploy the server.
-
-## 1. Remove or Bypass the Terminal Approval
-Currently, `server.py` pauses and asks `Approve? (y/n)` in the terminal. On Railway, this will throw an `EOFError` (as there is no active terminal) and fail the request.
-
-**Solution**:
-Introduce an environment variable (e.g., `ENVIRONMENT=production`) to bypass the terminal prompt, and instead secure the endpoints with a static API Key.
-- Update `server.py` to check for a custom `X-API-Key` header.
-- Skip `input()` if running in the cloud.
-
-## 2. Migrate Secrets to Environment Variables
-You should **NEVER** commit `credentials.json` or `token.json` to your Git repository. 
-
-**Solution**:
-- Keep `credentials.json` and `token.json` in your `.gitignore` (already done).
-- Update `auth.py` to read credentials directly from environment variables.
-- You can store the raw JSON strings of both files into Railway environment variables:
-  - `GOOGLE_CREDENTIALS_JSON`
-  - `GOOGLE_TOKEN_JSON`
-
-## 3. Update the Port Configuration
-Railway injects a dynamic `$PORT` environment variable that your app must bind to.
-
-**Solution**:
-Update the bottom of `server.py`:
-```python
-import os
-import uvicorn
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
-```
-
-## 4. Deployment Steps
-
-Once the code changes are made, deploying to Railway is straightforward:
-
-1. **Commit your code to GitHub**: Push the repository (ensure `.gitignore` is intact).
-2. **Connect Railway to GitHub**: In the Railway dashboard, create a new project and select "Deploy from GitHub repo".
-3. **Add Environment Variables**: Before the deployment finishes, go to the Railway project variables and add:
-   - `PORT`: (Railway usually handles this, but good to know)
-   - `ENVIRONMENT`: `production`
-   - `API_KEY`: `<generate a secret string to act as your password>`
-   - `GOOGLE_CREDENTIALS_JSON`: `<paste the exact contents of credentials.json>`
-   - `GOOGLE_TOKEN_JSON`: `<paste the exact contents of token.json>`
-4. **Deploy**: Railway will automatically detect `requirements.txt`, install dependencies, and start the app using the command it finds or fallback to the python execution.
+This document outlines the deployment strategy for the complete **Weekly Product Review Pulse** ecosystem, including:
+1. **Google MCP Server:** Exposes Google Workspace API tools (Docs/Gmail) secured via API tokens.
+2. **Weekly Pulse Dashboard & Scraper Pipeline:** The review processing engine and dynamic dashboard interface.
 
 ---
-**Do you want me to go ahead and make the code changes for Steps 1, 2, and 3 so it is ready for deployment?**
+
+## Part 1: Google MCP Server Deployment (Railway)
+
+Deploying the local Google MCP Server to Railway requires setting up authentication parameters and bypassing interactive terminal confirmations.
+
+### 1. Remove Terminal Confirmation
+In production, endpoint actions are auto-approved. Secure requests by generating an `API_KEY` that clients must provide in their headers.
+- Set the environment variable `ENVIRONMENT=production` to bypass terminal prompts.
+- Ensure clients provide the `X-API-Key` matching the server's configured `API_KEY`.
+
+### 2. Configure Credentials as Environment Variables
+Instead of committing `credentials.json` and `token.json` (which are ignored by git), paste their raw content strings directly into your Railway project environment:
+- `GOOGLE_CREDENTIALS_JSON`: The contents of `credentials.json`.
+- `GOOGLE_TOKEN_JSON`: The contents of `token.json`.
+
+### 3. Railway Configuration
+- Railway will inject a dynamic `$PORT` environment variable that the server automatically binds to.
+- Select **Deploy from GitHub** on Railway and link the repository.
+- Configure these variables:
+  - `ENVIRONMENT`: `production`
+  - `API_KEY`: `<your_secret_auth_token>`
+  - `GOOGLE_CREDENTIALS_JSON`: `<raw string>`
+  - `GOOGLE_TOKEN_JSON`: `<raw string>`
+
+---
+
+## Part 2: Dashboard & Scraper Pipeline Deployment (Docker - Option B)
+
+We containerize the pipeline and web server to pre-cache heavy machine learning models (spaCy and sentence-transformers) at build-time to optimize server memory and reduce runtime start latency.
+
+### 1. Dockerfile
+Use the configured `Dockerfile` in the repository root:
+```dockerfile
+FROM python:3.12-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy requirements and install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Pre-download spaCy model for PII scrubber
+RUN python -m spacy download en_core_web_sm
+
+# Pre-download SentenceTransformer model to speed up runtime starts
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')"
+
+# Copy the rest of the application files
+COPY . .
+
+# Expose port 8001 (configurable via PORT env var in run_app.py)
+EXPOSE 8001
+
+CMD ["python", "run_app.py"]
+```
+
+### 2. Configure Cloud Web Service (Railway/Render)
+1. Push the updated codebase to your GitHub repository.
+2. In the cloud dashboard, select "Create New Web Service" and link to this repository.
+3. Configure the following environment variables:
+   - `PORT`: `8001` (Or let the system assign a dynamic port)
+   - `GEMINI_API_KEY`: `<your_gemini_api_key>`
+   - `MCP_SERVER_URL`: `https://your-mcp-server.railway.app` (The URL of the server deployed in Part 1)
+   - `MCP_API_KEY`: `<your_mcp_server_api_key>`
+   - `GOOGLE_DOC_ID`: `<target_google_doc_id>`
+   - `STAKEHOLDER_EMAIL`: `<recipient_email>`
+   - `MAX_REVIEWS_TO_FETCH`: `1000`
+4. Deploy the service. The build engine will install requirements, cache models, compile C extensions, and expose the dashboard on the public URL.
+
+---
+
+## Part 3: Dashboard & Scraper Pipeline Deployment (Local VM - Option A)
+
+If you prefer to deploy on a local dedicated Windows/Linux VM instead of Docker:
+1. Clone the repository and configure `.env`.
+2. Set up `run_app.py` as a system service using **NSSM** (Windows) or **systemd** (Linux).
+3. Set up a weekly scheduler trigger (using **Windows Task Scheduler** or **cron** on Linux) to run `main.py` automatically (e.g. `0 9 * * 1` for Monday at 9:00 AM IST).

@@ -3,3 +3,17 @@ uvicorn
 google-auth-oauthlib
 google-auth-httplib2
 google-api-python-client
+google-play-scraper
+pandas
+python-dotenv
+ruff
+emoji
+langdetect
+presidio-analyzer
+presidio-anonymizer
+spacy
+sentence-transformers
+umap-learn
+hdbscan
+scikit-learn
+google-generativeai

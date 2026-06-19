@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.git/
+.env
+.gitignore
+data/raw/*_raw_reviews_*.json
+data/raw/*_reviews_*.json

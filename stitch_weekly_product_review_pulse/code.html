@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Weekly Product Review Pulse - Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Outfit:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#4edea3",
+                    "surface-container-low": "#131b2e",
+                    "tertiary-container": "#e29100",
+                    "on-primary-fixed": "#002113",
+                    "on-primary-fixed-variant": "#005236",
+                    "tertiary": "#ffb95f",
+                    "on-tertiary-fixed": "#2a1700",
+                    "secondary-container": "#3e495d",
+                    "surface-container": "#171f33",
+                    "on-tertiary": "#472a00",
+                    "error-container": "#93000a",
+                    "outline": "#86948a",
+                    "inverse-primary": "#006c49",
+                    "on-background": "#dae2fd",
+                    "on-secondary-fixed": "#111c2d",
+                    "tertiary-fixed": "#ffddb8",
+                    "surface-dim": "#0b1326",
+                    "surface-container-highest": "#2d3449",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-error": "#690005",
+                    "on-secondary": "#263143",
+                    "background": "#0b1326",
+                    "on-primary-container": "#00422b",
+                    "on-error-container": "#ffdad6",
+                    "outline-variant": "#3c4a42",
+                    "on-tertiary-container": "#523200",
+                    "surface-container-lowest": "#060e20",
+                    "primary-container": "#10b981",
+                    "on-surface": "#dae2fd",
+                    "surface-bright": "#31394d",
+                    "surface": "#0b1326",
+                    "inverse-on-surface": "#283044",
+                    "surface-tint": "#4edea3",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "inverse-surface": "#dae2fd",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed-variant": "#3c475a",
+                    "surface-variant": "#2d3449",
+                    "on-surface-variant": "#bbcabf",
+                    "on-primary": "#003824",
+                    "secondary-fixed-dim": "#bcc7de",
+                    "primary-fixed": "#6ffbbe",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "surface-container-high": "#222a3d",
+                    "on-secondary-container": "#aeb9d0",
+                    "secondary": "#bcc7de",
+                    "secondary-fixed": "#d8e3fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit-xs": "4px",
+                    "unit-sm": "8px",
+                    "margin-mobile": "16px",
+                    "container-max": "1440px",
+                    "gutter": "24px",
+                    "unit-lg": "24px",
+                    "unit-xl": "48px",
+                    "unit-md": "16px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Outfit"],
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Outfit"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Outfit"],
+                    "headline-lg-mobile": ["Outfit"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.05);
+        }
+        .emerald-glow:hover {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+        .active-nav-glow {
+            box-shadow: 0 0 15px rgba(78, 222, 163, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden">
+<!-- Success Toast (Hidden by default) -->
+<div class="fixed top-8 left-1/2 -translate-x-1/2 z-[100] transform transition-all duration-500 translate-y-[-150%] opacity-0" id="success-toast">
+<div class="glass-card px-unit-lg py-unit-md rounded-xl flex items-center gap-unit-md border-primary/30">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex flex-col">
+<p class="font-headline-md text-[16px] text-primary">Pipeline Triggered</p>
+<p class="text-body-sm text-on-surface-variant">Review analysis is now in progress.</p>
+</div>
+</div>
+</div>
+<div class="flex h-screen w-full relative">
+<!-- Background Ambient Glows -->
+<div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-tertiary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container/70 backdrop-blur-xl border-r border-white/10 shadow-xl flex flex-col p-unit-md z-50">
+<div class="mb-unit-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Product Pulse</h1>
+<p class="text-body-sm text-on-surface-variant opacity-70">Weekly Review System</p>
+</div>
+<nav class="flex-1 space-y-unit-sm">
+<!-- Overview: Active -->
+<a class="flex items-center gap-unit-md px-unit-md py-3 rounded-lg text-primary font-bold border-r-2 border-primary bg-primary/10 active-nav-glow transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md">Overview</span>
+</a>
+<!-- Run Logs: Inactive -->
+<a class="flex items-center gap-unit-md px-unit-md py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md">Run Logs</span>
+</a>
+</nav>
+<div class="mt-auto pt-unit-lg border-t border-white/5 space-y-unit-md">
+<div class="flex flex-col gap-unit-sm">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50 px-unit-md">Integrations</p>
+<div class="flex items-center gap-unit-sm px-unit-md py-1">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(78,222,163,0.5)]"></div>
+<span class="text-body-sm text-on-surface-variant">Play Store</span>
+</div>
+<div class="flex items-center gap-unit-sm px-unit-md py-1">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(78,222,163,0.5)]"></div>
+<span class="text-body-sm text-on-surface-variant">Docs MCP</span>
+</div>
+<div class="flex items-center gap-unit-sm px-unit-md py-1">
+<div class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(255,185,95,0.5)]"></div>
+<span class="text-body-sm text-on-surface-variant">Gmail MCP</span>
+</div>
+</div>
+<button class="w-full py-unit-sm px-unit-md glass-card rounded-xl text-on-surface text-body-sm hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+                    System Status
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-64 flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-surface-container-low/70 backdrop-blur-xl border-b border-white/10 flex items-center justify-between px-unit-lg z-40">
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface">Weekly Product Review Pulse</h2>
+<div class="flex items-center gap-unit-lg">
+<div class="flex items-center gap-unit-md">
+<button class="p-2 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-on-primary font-bold px-unit-lg py-2 rounded-full transition-all duration-300 emerald-glow flex items-center gap-2" id="run-pipeline-btn">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+                        Run Pipeline
+                    </button>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="mt-16 flex-1 overflow-y-auto custom-scrollbar p-unit-lg pb-12">
+<div class="max-w-container-max mx-auto space-y-gutter">
+<!-- Executive Stats -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="glass-card p-unit-lg rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-4xl">reviews</span>
+</div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Total Reviews</p>
+<div class="flex items-end gap-2">
+<h3 id="stat-total-reviews" class="font-headline-lg text-headline-lg text-on-surface">0</h3>
+<span class="text-primary text-body-sm font-bold mb-1 flex items-center"><span class="material-symbols-outlined text-sm">arrow_upward</span> --%</span>
+</div>
+</div>
+<div class="glass-card p-unit-lg rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-4xl">security</span>
+</div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">PII Redacted</p>
+<h3 id="stat-pii-redacted" class="font-headline-lg text-headline-lg text-on-surface">0</h3>
+<p class="text-body-sm text-on-surface-variant">Entities protected</p>
+</div>
+<div class="glass-card p-unit-lg rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-4xl">category</span>
+</div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Themes Found</p>
+<h3 id="stat-themes-found" class="font-headline-lg text-headline-lg text-on-surface">0</h3>
+<p class="text-body-sm text-primary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Active Now
+                            </p>
+</div>
+<div class="glass-card p-unit-lg rounded-2xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-4xl">sync</span>
+</div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider mb-2">MCP Sync</p>
+<h3 id="stat-mcp-status" class="font-headline-lg text-headline-lg text-on-surface">Pending</h3>
+<p id="stat-mcp-detail" class="text-body-sm text-on-surface-variant">Checking connection...</p>
+</div>
+</div>
+<!-- Trend Analytics & Theme Explorer Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Trend Analytics -->
+<div class="lg:col-span-2 glass-card rounded-2xl p-unit-lg">
+<div class="flex items-center justify-between mb-unit-xl">
+<h4 class="font-headline-md text-headline-md">Theme Volume Trends</h4>
+<div class="flex items-center gap-unit-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-label-sm text-on-surface-variant">Volume</span>
+</div>
+<select class="bg-surface-variant/50 border-none rounded-lg text-label-sm focus:ring-primary/50 text-on-surface">
+<option>Last 8 Weeks</option>
+<option>Last 6 Months</option>
+</select>
+</div>
+</div>
+<!-- Mockup Chart Area -->
+<div class="h-64 w-full relative flex items-end justify-between px-2 gap-4">
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="border-t border-white/5 w-full"></div>
+<div class="border-t border-white/5 w-full"></div>
+<div class="border-t border-white/5 w-full"></div>
+<div class="border-t border-white/5 w-full"></div>
+<div class="border-t border-white/5 w-full"></div>
+</div>
+<div class="relative w-full h-full">
+<!-- Animated placeholder for line chart using a clip-path simulated curve -->
+<svg class="w-full h-full preserve-3d overflow-visible" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#4edea3" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#4edea3" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,150 Q100,80 200,120 T400,60 T600,90 T800,40 V200 H0 Z" fill="url(#gradient)"></path>
+<path d="M0,150 Q100,80 200,120 T400,60 T600,90 T800,40" fill="none" stroke="#4edea3" stroke-linecap="round" stroke-width="3"></path>
+<!-- Data Points -->
+<circle cx="200" cy="120" fill="#4edea3" r="4"></circle>
+<circle cx="400" cy="60" fill="#4edea3" r="4"></circle>
+<circle cx="600" cy="90" fill="#4edea3" r="4"></circle>
+<circle cx="800" cy="40" fill="#4edea3" r="4"></circle>
+</svg>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-label-sm text-on-surface-variant">
+<span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>W7</span><span>W8</span>
+</div>
+</div>
+<!-- Theme Explorer -->
+<div class="glass-card rounded-2xl p-unit-lg flex flex-col">
+<h4 class="font-headline-md text-headline-md mb-unit-lg">Theme Explorer</h4>
+<div id="theme-explorer-container" class="space-y-unit-md flex-1">
+<!-- Panel 1 -->
+<div class="bg-white/5 rounded-xl border border-white/10 overflow-hidden">
+<button class="w-full p-unit-md flex items-center justify-between text-left" onclick="togglePanel('panel-1')">
+<span class="font-label-md text-on-surface">Account Access Issues</span>
+<span class="material-symbols-outlined transition-transform" id="icon-panel-1">expand_more</span>
+</button>
+<div class="px-unit-md pb-unit-md space-y-unit-md hidden" id="panel-1">
+<div class="space-y-2">
+<p class="text-body-sm italic text-on-surface-variant border-l-2 border-primary/30 pl-3">"User unable to login after v4.2 update. Auth token mismatch reported..."</p>
+<p class="text-body-sm italic text-on-surface-variant border-l-2 border-primary/30 pl-3">"Login screen freezes on Android 13 devices specifically."</p>
+</div>
+<div class="pt-2">
+<p class="text-label-sm text-primary font-bold mb-2 uppercase tracking-tighter">Action Items</p>
+<div class="space-y-1">
+<label class="flex items-center gap-2 text-body-sm cursor-pointer">
+<input class="rounded bg-white/5 border-white/20 text-primary focus:ring-primary/20" type="checkbox"/>
+                                                    Review v4.2 Auth Logs
+                                                </label>
+<label class="flex items-center gap-2 text-body-sm cursor-pointer">
+<input class="rounded bg-white/5 border-white/20 text-primary focus:ring-primary/20" type="checkbox"/>
+                                                    Check device compatibility
+                                                </label>
+</div>
+</div>
+</div>
+</div>
+<!-- Panel 2 -->
+<div class="bg-white/5 rounded-xl border border-white/10 overflow-hidden">
+<button class="w-full p-unit-md flex items-center justify-between text-left" onclick="togglePanel('panel-2')">
+<span class="font-label-md text-on-surface">Portfolio Performance</span>
+<span class="material-symbols-outlined transition-transform" id="icon-panel-2">expand_more</span>
+</button>
+<div class="px-unit-md pb-unit-md hidden" id="panel-2">
+<p class="text-body-sm italic text-on-surface-variant border-l-2 border-primary/30 pl-3">"Slow loading of graph on Android. Takes 5s+ to render historical data."</p>
+</div>
+</div>
+</div>
+<button class="mt-4 text-primary text-label-md flex items-center gap-1 hover:underline">
+                                View All Themes <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- System Logs & Audit Trail -->
+<div class="glass-card rounded-2xl overflow-hidden">
+<div class="px-unit-lg py-unit-md border-b border-white/10 flex items-center justify-between">
+<h4 class="font-headline-md text-headline-md">System Logs &amp; Audit Trail</h4>
+<button class="text-on-surface-variant hover:text-on-surface flex items-center gap-1 text-label-sm">
+<span class="material-symbols-outlined text-[18px]">download</span> Export CSV
+                            </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-white/5 text-label-sm text-on-surface-variant uppercase tracking-wider">
+<tr>
+<th class="px-unit-lg py-3">Run ID</th>
+<th class="px-unit-lg py-3">Date</th>
+<th class="px-unit-lg py-3">Review Count</th>
+<th class="px-unit-lg py-3">Doc Link</th>
+<th class="px-unit-lg py-3">Status</th>
+</tr>
+</thead>
+<tbody id="audit-logs-table-body" class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-unit-lg py-4 font-mono text-body-sm text-primary">#PULSE-8821</td>
+<td class="px-unit-lg py-4 text-body-sm">Oct 24, 2023 · 14:22</td>
+<td class="px-unit-lg py-4 text-body-sm">342</td>
+<td class="px-unit-lg py-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">anchor</span>
+<span class="text-body-sm underline decoration-white/20">Review_Digest_v4</span>
+</a>
+</td>
+<td class="px-unit-lg py-4">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold border border-primary/20">Success</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-unit-lg py-4 font-mono text-body-sm text-primary">#PULSE-8820</td>
+<td class="px-unit-lg py-4 text-body-sm">Oct 23, 2023 · 09:15</td>
+<td class="px-unit-lg py-4 text-body-sm">128</td>
+<td class="px-unit-lg py-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">anchor</span>
+<span class="text-body-sm underline decoration-white/20">Review_Digest_v3</span>
+</a>
+</td>
+<td class="px-unit-lg py-4">
+<span class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-xs font-bold border border-tertiary/20">Warning</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-unit-lg py-4 font-mono text-body-sm text-primary">#PULSE-8819</td>
+<td class="px-unit-lg py-4 text-body-sm">Oct 22, 2023 · 18:45</td>
+<td class="px-unit-lg py-4 text-body-sm">821</td>
+<td class="px-unit-lg py-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">anchor</span>
+<span class="text-body-sm underline decoration-white/20">Review_Digest_v2</span>
+</a>
+</td>
+<td class="px-unit-lg py-4">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold border border-primary/20">Success</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+        const runBtn = document.getElementById('run-pipeline-btn');
+        const toast = document.getElementById('success-toast');
+        const toastTitle = toast.querySelector('p.font-headline-md');
+        const toastMessage = toast.querySelector('p.text-body-sm');
+        const toastIcon = toast.querySelector('span.material-symbols-outlined');
+        const toastContainer = toast.querySelector('.glass-card');
+
+        let isRunning = false;
+
+        function showToast(title, message, type = 'success') {
+            toastTitle.innerText = title;
+            toastMessage.innerText = message;
+            
+            if (type === 'success') {
+                toastIcon.innerText = 'check_circle';
+                toastIcon.className = 'material-symbols-outlined text-primary';
+                toastTitle.className = 'font-headline-md text-[16px] text-primary';
+                toastContainer.className = 'glass-card px-unit-lg py-unit-md rounded-xl flex items-center gap-unit-md border border-primary/30';
+            } else if (type === 'info') {
+                toastIcon.innerText = 'info';
+                toastIcon.className = 'material-symbols-outlined text-tertiary';
+                toastTitle.className = 'font-headline-md text-[16px] text-tertiary';
+                toastContainer.className = 'glass-card px-unit-lg py-unit-md rounded-xl flex items-center gap-unit-md border border-tertiary/30';
+            } else {
+                toastIcon.innerText = 'error';
+                toastIcon.className = 'material-symbols-outlined text-error';
+                toastTitle.className = 'font-headline-md text-[16px] text-error';
+                toastContainer.className = 'glass-card px-unit-lg py-unit-md rounded-xl flex items-center gap-unit-md border border-error/30';
+            }
+
+            toast.classList.remove('translate-y-[-150%]', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-[-150%]', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 5000);
+        }
+
+        async function fetchData() {
+            try {
+                const res = await fetch('/api/data');
+                const data = await res.json();
+
+                // Update Stats
+                document.getElementById('stat-total-reviews').innerText = data.total_reviews.toLocaleString();
+                document.getElementById('stat-pii-redacted').innerText = data.pii_redacted.toLocaleString();
+                document.getElementById('stat-themes-found').innerText = data.themes_found.toString();
+                
+                const mcpStatus = document.getElementById('stat-mcp-status');
+                mcpStatus.innerText = data.mcp_status;
+                if (data.mcp_status === 'Connected') {
+                    mcpStatus.className = 'font-headline-lg text-headline-lg text-primary';
+                } else {
+                    mcpStatus.className = 'font-headline-lg text-headline-lg text-error';
+                }
+                document.getElementById('stat-mcp-detail').innerText = data.mcp_detail;
+
+                // Update Theme Explorer
+                const themeContainer = document.getElementById('theme-explorer-container');
+                themeContainer.innerHTML = '';
+
+                if (data.themes.length === 0) {
+                    themeContainer.innerHTML = `
+                        <div class="p-unit-lg text-center text-on-surface-variant">
+                            <span class="material-symbols-outlined text-4xl block mb-2">info</span>
+                            No themes identified yet. Click "Run Pipeline" to process reviews.
+                        </div>
+                    `;
+                } else {
+                    data.themes.forEach((theme, index) => {
+                        const panelId = `panel-${index}`;
+                        const iconId = `icon-panel-${index}`;
+                        
+                        const quotesHtml = theme.quotes.map(q => 
+                            `<p class="text-body-sm italic text-on-surface-variant border-l-2 border-primary/30 pl-3">"${q}"</p>`
+                        ).join('');
+
+                        const actionsHtml = theme.action_ideas.map((action, actionIndex) => `
+                            <label class="flex items-center gap-2 text-body-sm cursor-pointer hover:text-on-surface transition-colors">
+                                <input class="rounded bg-white/5 border-white/20 text-primary focus:ring-primary/20" type="checkbox"/>
+                                <span>${action}</span>
+                            </label>
+                        `).join('');
+
+                        const themeCard = document.createElement('div');
+                        themeCard.className = 'bg-white/5 rounded-xl border border-white/10 overflow-hidden hover:border-white/20 transition-all duration-300';
+                        themeCard.innerHTML = `
+                            <button class="w-full p-unit-md flex items-center justify-between text-left focus:outline-none" onclick="togglePanel('${panelId}')">
+                                <div class="flex items-center gap-unit-md">
+                                    <span class="font-label-md text-on-surface font-semibold text-[15px]">${theme.theme_name}</span>
+                                    <span class="bg-primary/10 text-primary px-2.5 py-0.5 rounded-full text-xs font-bold border border-primary/20">${theme.review_count} mentions</span>
+                                </div>
+                                <span class="material-symbols-outlined transition-transform duration-300" id="${iconId}">expand_more</span>
+                            </button>
+                            <div class="px-unit-md pb-unit-md space-y-unit-md hidden transition-all" id="${panelId}">
+                                <div class="space-y-2 pt-2 border-t border-white/5">
+                                    <p class="text-label-sm text-primary font-bold uppercase tracking-tighter">Sample Quotes</p>
+                                    ${quotesHtml}
+                                </div>
+                                <div class="pt-2">
+                                    <p class="text-label-sm text-primary font-bold mb-2 uppercase tracking-tighter">Action Items</p>
+                                    <div class="space-y-2">
+                                        ${actionsHtml}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        themeContainer.appendChild(themeCard);
+                    });
+
+                    // Auto-expand first panel on load
+                    if (data.themes.length > 0) {
+                        togglePanel('panel-0');
+                    }
+                }
+
+                // Update Logs Table
+                const logsTableBody = document.getElementById('audit-logs-table-body');
+                logsTableBody.innerHTML = '';
+
+                if (data.logs.length === 0) {
+                    logsTableBody.innerHTML = `
+                        <tr>
+                            <td colspan="5" class="px-unit-lg py-8 text-center text-on-surface-variant font-body-sm">
+                                No execution logs available.
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    data.logs.forEach(log => {
+                        const isSuccess = log.status.toLowerCase() === 'success';
+                        const statusClass = isSuccess 
+                            ? 'bg-primary/10 text-primary border border-primary/20' 
+                            : 'bg-error/10 text-error border border-error/20';
+
+                        const tr = document.createElement('tr');
+                        tr.className = 'hover:bg-white/5 transition-colors group border-b border-white/5';
+                        tr.innerHTML = `
+                            <td class="px-unit-lg py-4 font-mono text-body-sm text-primary">#PULSE-${log.run_id}</td>
+                            <td class="px-unit-lg py-4 text-body-sm">${log.date}</td>
+                            <td class="px-unit-lg py-4 text-body-sm">${log.reviews}</td>
+                            <td class="px-unit-lg py-4">
+                                <span class="text-on-surface-variant flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-[18px]">anchor</span>
+                                    <span class="text-body-sm">${log.doc_section}</span>
+                                </span>
+                            </td>
+                            <td class="px-unit-lg py-4">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold ${statusClass}">${log.status}</span>
+                            </td>
+                        `;
+                        logsTableBody.appendChild(tr);
+                    });
+                }
+
+            } catch (err) {
+                console.error('Error fetching dashboard data:', err);
+                showToast('Sync Error', 'Failed to retrieve database statistics.', 'error');
+            }
+        }
+
+        runBtn.addEventListener('click', async () => {
+            if (isRunning) return;
+
+            isRunning = true;
+            runBtn.disabled = true;
+            runBtn.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-on-primary inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+            `;
+            runBtn.classList.remove('emerald-glow');
+
+            showToast('Pipeline Started', 'Fetching Play Store reviews and analyzing clusters.', 'info');
+
+            try {
+                const res = await fetch('/api/run_pipeline', { method: 'POST' });
+                const result = await res.json();
+
+                if (result.success) {
+                    showToast('Success', 'Append to Google Doc completed, Gmail digest dispatched!', 'success');
+                    await fetchData();
+                } else {
+                    showToast('Pipeline Failed', result.error || 'Unknown error occurred.', 'error');
+                }
+            } catch (err) {
+                console.error('Error triggering pipeline:', err);
+                showToast('Connection Error', 'Failed to connect to the backend server.', 'error');
+            } finally {
+                isRunning = false;
+                runBtn.disabled = false;
+                runBtn.innerHTML = `
+                    <span class="material-symbols-outlined text-[20px]">bolt</span>
+                    Run Pipeline
+                `;
+                runBtn.classList.add('emerald-glow');
+            }
+        });
+
+        function togglePanel(id) {
+            const panel = document.getElementById(id);
+            const icon = document.getElementById(`icon-${id}`);
+            if (!panel || !icon) return;
+
+            const isHidden = panel.classList.contains('hidden');
+            
+            // Close all first for accordion behavior
+            document.querySelectorAll('[id^="panel-"]').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('[id^="icon-panel-"]').forEach(i => i.classList.remove('rotate-180'));
+
+            if (isHidden) {
+                panel.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            }
+        }
+
+        // Initialize dashboard on load
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchData();
+            // Refresh every 30 seconds
+            setInterval(fetchData, 30000);
+        });
+    </script>
+</body></html>

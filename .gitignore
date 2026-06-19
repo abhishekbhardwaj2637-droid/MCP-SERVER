@@ -11,3 +11,12 @@ __pycache__/
 .vscode/
 .idea/
 .DS_Store
+
+# Local project files (DO NOT COMMIT)
+.env
+venv/
+data/
+*.zip
+*.docx
+Problemstatement.txt
+
