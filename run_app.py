@@ -133,7 +133,10 @@ class DashboardHandler(BaseHTTPRequestHandler):
         mcp_status = "Disconnected"
         mcp_detail = "Unified MCP Server offline"
         try:
-            req = urllib.request.Request("http://127.0.0.1:8000/check_doc_anchor", method="POST")
+            from dotenv import load_dotenv
+            load_dotenv()
+            mcp_url = os.environ.get("MCP_SERVER_URL", "http://127.0.0.1:8000")
+            req = urllib.request.Request(f"{mcp_url}/check_doc_anchor", method="POST")
             req.add_header('Content-Type', 'application/json')
             # Sending dummy payload just to check connection
             with urllib.request.urlopen(req, data=json.dumps({"document_id": "dummy", "anchor_text": "dummy"}).encode(), timeout=1.0) as response:
