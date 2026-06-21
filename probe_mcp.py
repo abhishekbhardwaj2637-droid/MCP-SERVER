@@ -4,7 +4,7 @@ from mcp import ClientSession
 from mcp.client.sse import sse_client
 
 async def list_tools():
-    url = "https://web-production-c2c29.up.railway.app/sse"
+    url = "https://groww-review-project-production.up.railway.app/sse"
     print(f"Connecting to MCP Server at {url}...")
     try:
         async with sse_client(url) as streams:
